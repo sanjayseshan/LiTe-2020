@@ -1,4 +1,4 @@
- pr1, pr2, pr3, pr4, pr5, label
+pr1,pr2,pr3,pr4,pr5,label
 536,834,624,694,384,fist
 536,834,624,694,383,fist
 536,834,624,693,383,fist
