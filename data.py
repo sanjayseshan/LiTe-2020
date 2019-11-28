@@ -13,7 +13,7 @@ print(melbourne_data.columns)
 
 #melbourne_data = melbourne_data.dropna(axis=0)
 
-y = melbourne_data.label
+y = melbourne_data.intId
 
 melbourne_features = ['pr1', 'pr2', 'pr3', 'pr4', 'pr5']
 
