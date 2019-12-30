@@ -5,19 +5,19 @@ import time
 import sys
 
 fileOut = sys.argv[2]
+gestureTarget = sys.argv[3]
 port = sys.argv[1]
 
 f = open(fileOut, "w")
 
 ser = serial.Serial(port, 9600, timeout=1)
-
 def getData(timeout, label):
     timeI = time.time()
     while time.time()-timeI < timeout:
         try:
             reading = ser.readline()
             pr = [0,0,0,0,0,0,0,""]
-            pr[0] = time.time()-timeI
+            pr[0] = time.time()-timeIA
             pr[1] = time.time()
             pr[2] = int(reading.split('\n')[0].split(",")[0])
             pr[3] = int(reading.split('\n')[0].split(",")[1])
@@ -33,11 +33,12 @@ def getData(timeout, label):
         except:
             pass
 
-gestures = ["fist", "extend", "one", "two", "three", "four", "five", "spiderman", "vulcan", "index in", "middle in", "ring in", "little in", "thumb in", "lift up", "lift down"]
+gestures = [gestureTarget]*10
 
 print("delta Time, Unix Time, pr1, pr2, pr3, pr4, pr5, label")
 f.write("delta Time, Unix Time, pr1, pr2, pr3, pr4, pr5, label\n")
 
+timeIA = time.time()
 for gesture in gestures:
     continueQ = raw_input("Do "+gesture+"? [Y/n]: ")
     if continueQ == "y" or continueQ == "" or continueQ == "Y":
