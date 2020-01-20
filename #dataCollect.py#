@@ -34,7 +34,7 @@ def getData(timeout, label):
             pass
 
 #gestures = [gestureTarget]*10
-gestures = ["extend","fist","one"]*2
+gestures = ["extend","fist","one"]*3
 
 print("delta Time, Unix Time, pr1, pr2, pr3, pr4, pr5, label")
 f.write("delta Time, Unix Time, pr1, pr2, pr3, pr4, pr5, label\n")
