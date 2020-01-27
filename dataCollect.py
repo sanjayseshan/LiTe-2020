@@ -4,6 +4,7 @@ import serial
 import time
 import sys
 
+# Determine the file to save data to
 fileOut = sys.argv[2]
 gestureTarget = sys.argv[3]
 port = sys.argv[1]
