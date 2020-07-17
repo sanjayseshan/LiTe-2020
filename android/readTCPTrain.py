@@ -102,22 +102,36 @@ def getData(timeout, label):
 
 #gestures = ["fist", "extend", "one", "two", "three", "four", "five", "spiderman", "vulcan", "index in", "middle in", "ring in", "little in", "thumb in", "lift up", "lift down"]
 
-gestures=["relax","transition","extend","transition","relax"]
+
+def runGesture(gesture):
+        getData(5,"relax")
+        getData(2,"transition")
+        getData(5,gesture)
+        getData(2,"transition")
+        getData(5,"relax")
+        
+
+#gestures=["relax","transition","extend","transition","relax"]
+
+gestures = ["fist", "extend", "one"]
 
 print("delta Time, Unix Time, pr1, pr2, pr3, pr4, pr5, label, numLabel")
 f.write("delta Time, Unix Time, pr1, pr2, pr3, pr4, pr5, label, numLabel\n")
 trel = time.time()
 print(trel)
+
 for gesture in gestures:
     continueQ = input("Do "+gesture+"? [Y/n]: ")
     if continueQ == "y" or continueQ == "" or continueQ == "Y":
-        getData(5, gesture)
+        runGesture(gesture)
 #            while True:
 #                    print(getSerialBuf().split(","))
     elif continueQ == "n" or continueQ == "N":
         continueQ = "n"
     
 f.close()
+fx.close()
+fy.close()
 
 datafile = fileOut
 

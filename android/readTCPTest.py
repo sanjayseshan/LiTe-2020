@@ -45,8 +45,7 @@ datafile = fileOut
 saveFile = sys.argv[2] + 'modelSave2'
 
 f = open(fileOut, "w")
-fx = open(fileOut+"X.csv", "w")
-fy = open(fileOut+"Y.csv", "w")
+fy = open(fileOut+"Y.csv", "a")
 
 #ser = serial.Serial(port, 9600, timeout=1)
 
@@ -76,7 +75,7 @@ def getData(timeout, label):
     for i in pr:
         #print str(i)+",",
         f.write(str(i)+",")
-    print(pr)
+    #print(pr)
     fx.write(str(pr[2])+","+str(pr[3])+","+str(pr[4])+","+str(pr[5])+","+str(pr[6])+"\n")
     fy.write(str(pr[8])+"\n")
     #if dprdt == 0:
@@ -93,14 +92,24 @@ gestures = {
     4: "one",
     5: "transition"
 }
+fx = ""
 def predictML():
-    getData(0,"none")
+    global fx
+    fx = open(fileOut+"X.csv", "a")
+    getData(0,"generic")
+    fx.close()
+    #    try:
     x_data = pd.read_csv(datafile+"X.csv",names=['s1','s2','s3','s4','s5'])
     x_test = x_data[-500:]
+#    print(x_test)
     y_pred = model.predict(x_test)
+#    print(y_pred)
     rounded = [np.argmax(x) for x in y_pred]
-    print("Gesture: "+rounded[-1]+"; "+gestures[rounded[-1]])
-
+#    print(rounded)
+    print("Gesture: "+str(rounded[-1])+"; "+gestures[rounded[-1]])
+    #    except:
+    #        pass
+            
 
 print("delta Time, Unix Time, pr1, pr2, pr3, pr4, pr5, label")
 f.write("delta Time, Unix Time, pr1, pr2, pr3, pr4, pr5, label\n")
