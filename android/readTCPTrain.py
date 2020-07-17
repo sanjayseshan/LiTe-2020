@@ -21,11 +21,12 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect(("localhost", 8080))
 
 gesturesC = {
-    "relax":1,
-    "extend":2,
-    "fist":3,
-    "one":4,
-    "transition":5
+        "relax":1,
+        "extend":2,
+        "fist":3,
+        "one":4,
+        "transition":5,
+        "two":6
 }
 
 def getSerial():

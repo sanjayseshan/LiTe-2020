@@ -18,7 +18,8 @@ gesturesC = {
     "fist":3,
     "one":4,
         "transition":5,
-        "generic":-1
+        "generic":-1,
+        "two":6
 }
 
 def getSerial():
@@ -90,7 +91,8 @@ gestures = {
     2: "extend",
     3: "fist",
     4: "one",
-    5: "transition"
+        5: "transition",
+    6: "two"
 }
 fx = ""
 def predictML():
@@ -100,7 +102,7 @@ def predictML():
     fx.close()
     #    try:
     x_data = pd.read_csv(datafile+"X.csv",names=['s1','s2','s3','s4','s5'])
-    x_test = x_data[-500:]
+    x_test = x_data[-600:]
 #    print(x_test)
     y_pred = model.predict(x_test)
 #    print(y_pred)
@@ -109,7 +111,6 @@ def predictML():
     print("Gesture: "+str(rounded[-1])+"; "+gestures[rounded[-1]])
     #    except:
     #        pass
-            
 
 print("delta Time, Unix Time, pr1, pr2, pr3, pr4, pr5, label")
 f.write("delta Time, Unix Time, pr1, pr2, pr3, pr4, pr5, label\n")
