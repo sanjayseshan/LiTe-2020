@@ -142,9 +142,9 @@ num_classes = np.max(y_dataR) + 1
 y_data = keras.utils.to_categorical(y_dataR, num_classes)
 #x_train, x_test, y_train, y_test = train_test_split(x_data,y_data, test_size=0.20, random_state=0)
 x_train = x_data
-x_test = x_data[880:]
+x_test = x_data
 y_train = y_data
-y_test = y_data[880:]
+y_test = y_data
 x_train.shape,y_train.shape,x_test.shape,y_test.shape
 
 #defifne a sequentail Model
