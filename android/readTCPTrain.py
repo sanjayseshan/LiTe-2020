@@ -114,7 +114,7 @@ def runGesture(gesture):
 
 #gestures=["relax","transition","extend","transition","relax"]
 
-gestures = ["fist", "extend", "one"]
+gestures = ["fist", "extend", "one","two"]
 
 print("delta Time, Unix Time, pr1, pr2, pr3, pr4, pr5, label, numLabel")
 f.write("delta Time, Unix Time, pr1, pr2, pr3, pr4, pr5, label, numLabel\n")
@@ -158,9 +158,9 @@ model.add(Dense(100,activation = 'relu',kernel_regularizer=l2(0.01)))
 model.add(Dropout(0.3, noise_shape=None, seed=None))
 
 #Output layer
-model.add(Dense(6,activation='sigmoid'))
+model.add(Dense(7,activation='sigmoid'))
 model.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy'])
-model_output = model.fit(x_train,y_train,epochs=150,batch_size=20,verbose=1,validation_data=(x_test,y_test),)
+model_output = model.fit(x_train,y_train,epochs=400,batch_size=20,verbose=1,validation_data=(x_test,y_test),)
 model.save(fileOut+'modelSave2')
 model.summary()
 
